@@ -29,7 +29,7 @@ const About = () => {
   const stats = [
     {
       icon: Briefcase,
-      number: "8+",
+      number: "3+",
       label: "Years of Pioneering Experience",
       color: "pharma-blue",
       delay: "0.2s",
