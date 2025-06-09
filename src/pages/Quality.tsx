@@ -128,7 +128,7 @@ const Quality = () => {
                 Our Quality Mandate
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                At Madrid Pharmaceuticals, quality is more than a procedure—it's
+                At Madrid Pharmaceutical, quality is more than a procedure—it's
                 the core principle that underpins our entire operation. It is
                 the unshakable foundation upon which we build trust with
                 patients, healthcare providers, and regulatory bodies worldwide.
