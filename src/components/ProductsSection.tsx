@@ -113,7 +113,7 @@ const ProductsSection = () => {
     { value: "20", label: "Employees", iconColor: "text-pharma-green" },
     { value: "8", label: "Products", iconColor: "text-pharma-lightBlue" },
     { value: "15", label: "Cities", iconColor: "text-pharma-green" },
-    { value: "1", label: "R&D Center", iconColor: "text-pharma-lightBlue" },
+    { value: "0", label: "R&D Center", iconColor: "text-pharma-lightBlue" },
   ];
 
   const featuredProducts = [
