@@ -142,7 +142,7 @@ const ProductDetail = () => {
       name: "Livofolate",
       category: "Nutritional Supplement / Neurotropic",
       description:
-        "A comprehensive neurotropic and cardioprotective formula with active B-vitamins and Omega-3 fatty acids to support overall nerve, brain, and heart health.",
+        "Livofolate provides a powerful combination often used in gynecology, particularly during preconception, pregnancy, and breastfeeding to support fetal development and maternal health.",
       images: [livofolateMain, livofolate1, livofolate2, livofolate3],
       features: [
         "Contains active forms of B-Vitamins (B6, B9, B12)",
