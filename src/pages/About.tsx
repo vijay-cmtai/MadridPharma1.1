@@ -148,7 +148,7 @@ const About = () => {
           >
             About{" "}
             <span className="bg-gradient-to-r from-pharma-lightBlue to-pharma-green bg-clip-text text-transparent">
-              Madrid Pharmaceuticals
+              Madrid Pharmaceutical
             </span>
           </h1>
           <p
