@@ -36,9 +36,11 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
                 <p className="text-gray-300">
-                  MADRID PHARMACEUTICAL PVT LTD H.N. B-2405 MAIN ROAD,
+                  MADRID PHARMACEUTICAL PVT LTD
                   <br />
-                  PUSTA-1 SONIA VIHAR, DELHI- 110094
+                   H.N. B-2405 MAIN ROAD,PUSTA-1 SONIA VIHAR,
+                  <br/>
+                   DELHI- 110094
                 </p>
               </div>
               {/* <div className="flex items-center space-x-3">
