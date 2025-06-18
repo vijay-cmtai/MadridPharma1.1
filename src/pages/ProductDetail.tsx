@@ -4,12 +4,10 @@ import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-// Swiper modules for image carousel
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
-// Icons and UI components
 import {
   ArrowLeft,
   CheckCircle,
@@ -21,62 +19,51 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-// --- IMAGE IMPORTS (PLEASE CORRECT PATHS IF NEEDED) ---
-// Yahaan paths ko apne project structure ke hisaab se theek kar lein (e.g., ../../assets/...)
-// Fladecort 6 Images
 import fladecort1 from "/assets/images/productDetails/FALDECORT 1-Photoroom.png";
 import fladecort2 from "/assets/images/productDetails/FALDECORT2-Photoroom.png";
 import fladecort3 from "/assets/images/productDetails/FALDECORT3-Photoroom.png";
 import fladecort4 from "/assets/images/productDetails/FALDECORT4-Photoroom.png";
 
-// Linzocast 600 Images
 import linzocast1 from "/assets/images/productDetails/LINZOCAST 1-Photoroom.png";
 import linzocast2 from "/assets/images/productDetails/LINZOCAST2-Photoroom.png";
 import linzocast3 from "/assets/images/productDetails/LINZOCAST3-Photoroom.png";
 import linzocast4 from "/assets/images/productDetails/LINZOCAST4-Photoroom.png";
 
-// Livofolate Images
 import livofolateMain from "/assets/images/productDetails/LIVOFOLATE-Photoroom.png";
 import livofolate1 from "/assets/images/productDetails/LIVOFOLATE1-Photoroom.png";
 import livofolate2 from "/assets/images/productDetails/LIVOFOLATE2-Photoroom.png";
 import livofolate3 from "/assets/images/productDetails/LIVOFOLATE3-Photoroom.png";
 
-// Livozorb XT Syp Images
 import livozorbSypMain from "/assets/images/productDetails/LIVOZORB XT SUP-Photoroom.png";
 import livozorbSyp1 from "/assets/images/productDetails/LIVOZORB XT SUP1-Photoroom.png";
 import livozorbSyp2 from "/assets/images/productDetails/LIVOZORB XT SUP2-Photoroom.png";
 import livozorbSyp3 from "/assets/images/productDetails/LIVOZORB XT SUP3-Photoroom.png";
 
-// Livozorb XT Images
 import livozorbXtMain from "/assets/images/productDetails/LIVOZORB XT-Photoroom.png";
 import livozorbXt1 from "/assets/images/productDetails/LIVOZORB XT1-Photoroom.png";
 import livozorbXt2 from "/assets/images/productDetails/LIVOZORB XT2-Photoroom.png";
 import livozorbXt3 from "/assets/images/productDetails/LIVOZORB XT3-Photoroom.png";
 
-// Luxbone Fem Images
 import luxboneFem1 from "/assets/images/productDetails/LUXBONE FEM1-Photoroom.png";
 import luxboneFem2 from "/assets/images/productDetails/LUXBONE FEM2-Photoroom.png";
 import luxboneFem3 from "/assets/images/productDetails/LUXBONE FEM3-Photoroom.png";
 import luxboneFem4 from "/assets/images/productDetails/LUXBONE FEM4-Photoroom.png";
 
-// Luxbone Images
 import luxbone1 from "/assets/images/productDetails/LUXBONE1-Photoroom.png";
 import luxbone2 from "/assets/images/productDetails/LUXBONE2-Photoroom.png";
 import luxbone4 from "/assets/images/productDetails/LUXBONE4-Photoroom.png";
 import luxbone5 from "/assets/images/productDetails/LUXBONE5-Photoroom.png";
 
-// Pandoride DSR Images
 import pandorideMain from "/assets/images/productDetails/PANDORIDE-Photoroom.png";
 import pandoride1 from "/assets/images/productDetails/PANDORIDE1-Photoroom.png";
 import pandoride2 from "/assets/images/productDetails/PANDORIDE3-Photoroom.png";
 import pandoride3 from "/assets/images/productDetails/PANDORIDE5-Photoroom.png";
 
 const ProductDetail = () => {
-  const { productName } = useParams();
+  const { slug } = useParams();
 
-  // Product Data
   const productDetails = {
-    "lexprate-cr": {
+    "fladecort-6": {
       name: "Fladecort 6",
       category: "Corticosteroid / Anti-inflammatory",
       description:
@@ -107,7 +94,7 @@ const ProductDetail = () => {
         ],
       },
     },
-    calvilux: {
+    "linzocast-600": {
       name: "Linzocast 600",
       category: "Antibiotic / Infectious Disease",
       description:
@@ -138,7 +125,7 @@ const ProductDetail = () => {
         ],
       },
     },
-    multilux: {
+    livofolate: {
       name: "Livofolate",
       category: "Nutritional Supplement / Neurotropic",
       description:
@@ -172,7 +159,7 @@ const ProductDetail = () => {
         ],
       },
     },
-    neurolux: {
+    "livozorb-xt-syp": {
       name: "Livozorb XT Syp",
       category: "Hematology / Iron Supplement (Syrup)",
       description:
@@ -205,7 +192,7 @@ const ProductDetail = () => {
         ],
       },
     },
-    cardiolux: {
+    "livozorb-xt": {
       name: "Livozorb XT",
       category: "Hematology / Iron Supplement",
       description:
@@ -238,7 +225,7 @@ const ProductDetail = () => {
         ],
       },
     },
-    diabetlux: {
+    "luxbone-fem": {
       name: "Luxbone Fem",
       category: "Women's Health / Bone Supplement",
       description:
@@ -271,7 +258,7 @@ const ProductDetail = () => {
         ],
       },
     },
-    immunolux: {
+    luxbone: {
       name: "Luxbone",
       category: "Bone Health Supplement",
       description:
@@ -305,7 +292,7 @@ const ProductDetail = () => {
         ],
       },
     },
-    gastrolux: {
+    "pandoride-dsr": {
       name: "Pandoride DSR",
       category: "Gastroenterology / Anti-reflux",
       description:
@@ -340,7 +327,7 @@ const ProductDetail = () => {
     },
   };
 
-  const product = productDetails[productName as keyof typeof productDetails];
+  const product = productDetails[slug as keyof typeof productDetails];
 
   if (!product) {
     return (
@@ -352,7 +339,7 @@ const ProductDetail = () => {
             Product not found
           </h1>
           <p className="text-gray-600 mt-2">
-            The product '{productName}' does not exist or is not yet configured.
+            The product '{slug}' does not exist or is not yet configured.
           </p>
         </div>
         <Footer />
@@ -365,7 +352,6 @@ const ProductDetail = () => {
       <TopBar />
       <Navbar />
 
-      {/* Back Button */}
       <div className="container mx-auto px-4 py-4">
         <Button
           variant="ghost"
@@ -379,9 +365,7 @@ const ProductDetail = () => {
 
       <section className="py-8">
         <div className="container mx-auto px-4">
-          {/* Desktop: 2 column, Mobile: 1 column layout */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-            {/* Left Column - Images */}
             <div>
               <div className="relative mb-8">
                 <div
@@ -406,7 +390,6 @@ const ProductDetail = () => {
                 </Swiper>
               </div>
 
-              {/* Additional Info - Desktop: Left column, Mobile: After main content */}
               {product.additionalInfo && (
                 <div className="hidden lg:block p-6 bg-white rounded-xl shadow-lg border border-gray-100">
                   <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">
@@ -431,7 +414,6 @@ const ProductDetail = () => {
               )}
             </div>
 
-            {/* Right Column - Product Details */}
             <div>
               <div className="mb-6">
                 <div
@@ -467,7 +449,6 @@ const ProductDetail = () => {
                 </ul>
               </div>
 
-              {/* Indications and Composition - Grid layout */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
                   <h3 className="text-xl font-bold text-gray-800 mb-4">
@@ -502,7 +483,6 @@ const ProductDetail = () => {
             </div>
           </div>
 
-          {/* Additional Info - Mobile: Show after main content */}
           {product.additionalInfo && (
             <div className="lg:hidden mt-8 p-6 bg-white rounded-xl shadow-lg border border-gray-100">
               <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">
