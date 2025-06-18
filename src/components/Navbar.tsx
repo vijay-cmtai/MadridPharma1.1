@@ -16,18 +16,33 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import logoImage from "../logo1.png";
 
-// --- PRODUCT DATA (from Products.tsx) ---
-// This data is now used to dynamically build the products dropdown.
+// Helper function to create URL-friendly slugs from product names
+const createSlug = (name: string): string => {
+  return name
+    .toLowerCase()
+    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+    .replace(/\-\-+/g, '-') // Replace multiple - with single -
+    .replace(/^-+/, '') // Trim - from start of text
+    .replace(/-+$/, ''); // Trim - from end of text
+};
+
+// ===============================================
+// START: SIRF SLUG VALUES KO UPDATE KIYA GAYA HAI
+// ===============================================
 const productsData = [
-  { name: "Fladecort 6", slug: "lexprate-cr" },
-  { name: "Linzocast 600", slug: "calvilux" },
-  { name: "Livofolate", slug: "multilux" },
-  { name: "Livozorb XT Syp", slug: "neurolux" },
-  { name: "Livozorb XT", slug: "cardiolux" },
-  { name: "Luxbone Fem", slug: "diabetlux" },
-  { name: "Luxbone", slug: "immunolux" },
-  { name: "Pandoride DSR", slug: "gastrolux" },
+  { name: "Fladecort 6", slug: createSlug("Fladecort 6") },
+  { name: "Linzocast 600", slug: createSlug("Linzocast 600") },
+  { name: "Livofolate", slug: createSlug("Livofolate") },
+  { name: "Livozorb XT Syp", slug: createSlug("Livozorb XT Syp") },
+  { name: "Livozorb XT", slug: createSlug("Livozorb XT") },
+  { name: "Luxbone Fem", slug: createSlug("Luxbone Fem") },
+  { name: "Luxbone", slug: createSlug("Luxbone") },
+  { name: "Pandoride DSR", slug: createSlug("Pandoride DSR") },
 ];
+// ===============================================
+// END: SLUG UPDATE
+// ===============================================
 
 // Dynamically create the product navigation items
 const productNavItems = productsData.map((product) => ({
@@ -84,7 +99,6 @@ const navLinks: NavLink[] = [
     label: "Products",
     dropdown: true,
     activeCheckPaths: ["/products"],
-    // The "items" array is now built dynamically
     items: [
       {
         href: "/products",
@@ -92,7 +106,7 @@ const navLinks: NavLink[] = [
         subtitle: "Complete range",
         icon: ShoppingBag,
       },
-      ...productNavItems, // All products are added here
+      ...productNavItems,
     ],
   },
   { href: "/events", label: "Events" },
@@ -156,6 +170,7 @@ const Navbar = () => {
     setOpenMobileSubmenu(openMobileSubmenu === label ? null : label);
 
   return (
+    // BAAKI KA SARA UI CODE BILKUL Waisa hi HAI, KOI BADLAV NAHI
     <>
       <nav
         ref={navbarRef}
@@ -195,7 +210,6 @@ const Navbar = () => {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.2 }}
-                          // Added max-h-96 and overflow-y-auto for long lists
                           className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-max max-h-96 overflow-y-auto bg-white border rounded-lg shadow-xl z-[41] p-3 flex flex-col gap-1"
                         >
                           {link.items.map((item) => (
@@ -276,7 +290,6 @@ const Navbar = () => {
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
               className="fixed top-16 inset-x-4 bg-white shadow-xl z-40 lg:hidden rounded-xl border border-gray-200"
             >
-              {/* Added max-h-[80vh] and overflow-y-auto for mobile */}
               <div className="p-4 space-y-2 max-h-[80vh] overflow-y-auto">
                 {navLinks.map((link) =>
                   link.dropdown ? (
