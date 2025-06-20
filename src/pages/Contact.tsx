@@ -56,7 +56,6 @@ const Contact = () => {
     setSubmitStatus({ success: false, message: "" });
 
     try {
-      // ✅ URL ko proxy ke anusaar set kiya gaya hai
       const response = await fetch(
         "https://madridbackend.onrender.com/send-email",
         {
@@ -263,14 +262,15 @@ const Contact = () => {
                     title: "Address",
                     content:
                       "MADRID PHARMACEUTICAL PVT LTD\nH.N. B-2405 MAIN ROAD,\nPUSTA-1 SONIA VIHAR, DELHI- 110094",
-
                     color: "from-blue-500 to-blue-600",
                     bgColor: "from-blue-50 to-blue-100",
                   },
                   {
                     icon: Mail,
                     title: "Email",
-                    content: "Madridpharmaceautical@gmail.com",
+                    // --- [YEH LINE UPDATE HUI HAI] ---
+                    content:
+                      "Madridpharmaceautical@gmail.com\info@madridpharma.com",
                     color: "from-purple-500 to-purple-600",
                     bgColor: "from-purple-50 to-purple-100",
                   },
