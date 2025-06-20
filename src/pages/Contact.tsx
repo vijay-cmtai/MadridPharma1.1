@@ -56,6 +56,7 @@ const Contact = () => {
     setSubmitStatus({ success: false, message: "" });
 
     try {
+      // ✅ URL ko proxy ke anusaar set kiya gaya hai
       const response = await fetch(
         "https://madridbackend.onrender.com/send-email",
         {
@@ -195,8 +196,12 @@ const Contact = () => {
                     required
                   >
                     <option value="General Inquiry">General Inquiry</option>
-                    <option value="Product Information">Product Information</option>
-                    <option value="Partnership Opportunity">Partnership Opportunity</option>
+                    <option value="Product Information">
+                      Product Information
+                    </option>
+                    <option value="Partnership Opportunity">
+                      Partnership Opportunity
+                    </option>
                     <option value="Technical Support">Technical Support</option>
                     <option value="Other">Other</option>
                   </select>
@@ -248,7 +253,8 @@ const Contact = () => {
                 Get in Touch
               </h2>
               <p className="text-gray-700 text-lg mb-10 leading-relaxed">
-                We're here to help and answer any questions you might have. We look forward to hearing from you.
+                We're here to help and answer any questions you might have. We
+                look forward to hearing from you.
               </p>
               <div className="space-y-6 sm:space-y-8">
                 {[
@@ -257,14 +263,14 @@ const Contact = () => {
                     title: "Address",
                     content:
                       "MADRID PHARMACEUTICAL PVT LTD\nH.N. B-2405 MAIN ROAD,\nPUSTA-1 SONIA VIHAR, DELHI- 110094",
+
                     color: "from-blue-500 to-blue-600",
                     bgColor: "from-blue-50 to-blue-100",
                   },
                   {
                     icon: Mail,
                     title: "Email",
-                    content:
-                      "Madridpharmaceautical@gmail.com\ninfo@madridpharma.com",
+                    content: "Madridpharmaceautical@gmail.com",
                     color: "from-purple-500 to-purple-600",
                     bgColor: "from-purple-50 to-purple-100",
                   },
