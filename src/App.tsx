@@ -37,7 +37,7 @@ const App = () => {
         <title>Madrid Pharmaceutical pvt. Ltd</title>
         <meta
           name="description"
-          content="Madrid Pharmaceutical pvt. Ltd - Quality pharmaceutical products and healthcare solutions."
+          content="Madrid Pharmaceutical Pvt. Ltd - Quality pharmaceutical products and healthcare solutions."
         />
         <meta
           name="keywords"
