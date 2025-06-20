@@ -192,8 +192,8 @@ const About = () => {
                   <p>
                     Today, that passion has fueled our growth into a leading
                     name in the industry. Our expansion is not just measured in
-                    the <strong>3+ products</strong> we offer or the{" "}
-                    <strong>15+ cities</strong> we serve, but in the countless
+                    the <strong>8+ products</strong> we offer or the{" "}
+                    <strong>20+ cities</strong> we serve, but in the countless
                     lives we've touched. We remain dedicated to our founding
                     vision, pushing the boundaries of science to create a
                     healthier future for all.
