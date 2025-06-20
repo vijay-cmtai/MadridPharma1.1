@@ -1,23 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "/assets/images/madrid-logo.png"; // Apne logo ka sahi path yahan daalein
 
-// Pehle tailwind.config.js mein yeh colors add karein
+// Pehle tailwind.config.js mein yeh colors add karein, agar nahi hain toh
 // theme: {
 //   extend: {
 //     colors: {
-//       'pharma-darkBlue': '#1E3A8A', // Example: Navy Blue
-//       'pharma-lightBlue': '#3B82F6', // Example: Bright Blue
-//       'pharma-blue': '#00529b',
-//       'pharma-green': '#008e5b',
+//       'pharma-blue': '#2557a7',      // Primary Blue
+//       'pharma-green': '#008e5b',    // Primary Green
+//       'pharma-darkBlue': '#1E3A8A', // TopBar Blue
 //     },
 //   },
 // }
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
   const navLinks = [
@@ -29,15 +27,18 @@ const Navbar = () => {
   ];
 
   return (
-    // Sticky header jo TopBar ke neeche rahega
-    <header className="bg-white shadow-md sticky top-10 z-40">
+    // Step 1: `header` tag ko `bg-white` aur `shadow` diya gaya hai
+    <header className="bg-white shadow-sm sticky top-10 z-40"> {/* top-10 TopBar ki height ke liye hai, adjust kar sakte hain */}
+      
       {/* 
-        --- YEH HAI SABSE ZAROORI BADLAV ---
-        Outer div jo poori width leta hai aur mobile par padding deta hai.
-        Iske andar ka `container mx-auto` TopBar ke container se match karta hai.
+        Step 2: YEH SABSE ZAROORI HAI
+        Ek container div banaya gaya hai jo `TopBar` ke container se match karta hai.
+        `container mx-auto` content ko center mein rakhta hai.
+        `px-4` padding deta hai taaki content screen ke kinaron se na chipke.
       */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
+          
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link to="/">
@@ -46,6 +47,7 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Navigation Links */}
+          {/* `hidden lg:flex` - Yeh links sirf large screens par dikhenge */}
           <nav className="hidden lg:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
@@ -64,6 +66,7 @@ const Navbar = () => {
           </nav>
 
           {/* Desktop Get Started Button */}
+          {/* `hidden lg:block` - Yeh button sirf large screens par dikhega */}
           <div className="hidden lg:block">
             <Button
               asChild
@@ -74,61 +77,15 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button (Hamburger) */}
+          {/* `lg:hidden` - Yeh button sirf small screens par dikhega */}
           <div className="lg:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMenuOpen(true)}
-            >
+            <Button variant="ghost" size="icon">
               <Menu className="w-6 h-6 text-gray-700" />
             </Button>
           </div>
+
         </div>
       </div>
-
-      {/* --- MOBILE MENU --- */}
-      {/* Yeh tabhi dikhega jab isMenuOpen true hoga */}
-      {isMenuOpen && (
-        <div
-          className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm lg:hidden"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          <div
-            className="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-white shadow-2xl p-6"
-            onClick={(e) => e.stopPropagation()} // Menu par click karne se band na ho
-          >
-            <div className="flex justify-between items-center mb-8">
-              <h3 className="text-lg font-bold">Menu</h3>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <X className="w-6 h-6" />
-              </Button>
-            </div>
-            <nav className="flex flex-col space-y-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className="flex justify-between items-center text-lg font-medium text-gray-700 hover:text-pharma-blue py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.label}
-                  {link.hasDropdown && <ChevronDown className="w-5 h-5" />}
-                </Link>
-              ))}
-              <Button
-                asChild
-                className="w-full mt-6 font-bold text-white bg-gradient-to-r from-pharma-blue to-pharma-green"
-              >
-                <Link to="/get-started" onClick={() => setIsMenuOpen(false)}>Get Started</Link>
-              </Button>
-            </nav>
-          </div>
-        </div>
-      )}
     </header>
   );
 };
