@@ -30,7 +30,7 @@ const TopBar = () => {
             className="flex items-center space-x-1.5 hover:text-pharma-lightBlue transition-colors"
           >
             <Mail className="w-4 h-4" />
-            <span>MadridPharmaceutical@gmail.com</span>
+            <span>info@www.madridpharma.com/</span>
           </a>
         </div>
         <div className="flex items-center space-x-3">
