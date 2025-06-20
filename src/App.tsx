@@ -34,7 +34,7 @@ const App = () => {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>Madrid Pharmaceutical pvt. Ltd</title>
+        <title>Madrid Pharmaceutical Pvt. Ltd</title>
         <meta
           name="description"
           content="Madrid Pharmaceutical Pvt. Ltd - Quality pharmaceutical products and healthcare solutions."
