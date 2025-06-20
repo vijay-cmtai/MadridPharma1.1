@@ -265,12 +265,10 @@ const Contact = () => {
                     color: "from-blue-500 to-blue-600",
                     bgColor: "from-blue-50 to-blue-100",
                   },
-                  {
+                 {
                     icon: Mail,
                     title: "Email",
-                    // --- [YEH LINE UPDATE HUI HAI] ---
-                    content:
-                      "Madridpharmaceautical@gmail.com",
+                    content: "Madridpharmaceautical@gmail.com\ninfo@madridpharma.com",
                     color: "from-purple-500 to-purple-600",
                     bgColor: "from-purple-50 to-purple-100",
                   },
