@@ -43,7 +43,7 @@ const About = () => {
     },
     {
       icon: Globe,
-      number: "15+",
+      number: "20+",
       label: "Cities Served Globally",
       color: "accent-teal",
       delay: "0.4s",
