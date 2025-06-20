@@ -10,27 +10,15 @@ import {
 
 const TopBar = () => {
   return (
-    // If TopBar is sticky, ensure its z-index is less than the mobile menu overlay (z-40)
-    // For example, if it needs to be sticky: className="bg-pharma-darkBlue ... sticky top-0 z-30"
-    // If it's not sticky, z-index is not a concern for this problem.
-    <div className="bg-pharma-darkBlue text-white py-2.5 px-4 text-xs sm:text-sm">
-      {" "}
-      {/* Assuming pharma-darkBlue */}
-      <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center">
+    <div className="bg-pharma-darkBlue text-white py-2.5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center">
         <div className="flex flex-col items-center sm:flex-row sm:items-center gap-y-1 sm:gap-y-0 sm:space-x-4 mb-2 sm:mb-0">
-          {/* <a
-            href="tel:+918603662883"
-            className="flex items-center space-x-1.5 hover:text-pharma-lightBlue transition-colors"
-          >
-            <Phone className="w-4 h-4" />
-            <span>+91 86036 62883</span>
-          </a> */}
           <a
             href="mailto:MadridPharmaceutical@gmail.com"
             className="flex items-center space-x-1.5 hover:text-pharma-lightBlue transition-colors"
           >
             <Mail className="w-4 h-4" />
-            <span>info@www.madridpharma.com</span>
+            <span>info@madridpharma.com</span>
           </a>
         </div>
         <div className="flex items-center space-x-3">
