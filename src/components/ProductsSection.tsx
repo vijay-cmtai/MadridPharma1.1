@@ -101,9 +101,9 @@ const ProductsSection = () => {
   const sectionRef = useScrollAnimation("animate-fade-in", 0.05) as React.Ref<HTMLElement>;
 
   const companyStats = [
-    { value: "20", label: "Employees", iconColor: "text-pharma-green" },
+    { value: "15", label: "Employees", iconColor: "text-pharma-green" },
     { value: "8", label: "Products", iconColor: "text-pharma-lightBlue" },
-    { value: "15", label: "Cities", iconColor: "text-pharma-green" },
+    { value: "20", label: "Cities", iconColor: "text-pharma-green" },
     { value: "0", label: "R&D Center", iconColor: "text-pharma-lightBlue" },
   ];
 
