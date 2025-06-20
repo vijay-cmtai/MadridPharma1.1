@@ -89,9 +89,9 @@ const ProductsSection = () => {
 
   // --- [BADLAV 3] - `companyStats` array mein naya property add kiya gaya ---
   const companyStats = [
-    { value: "20", label: "Employees", iconColor: "text-pharma-green", showPlus: true },
+    { value: "15", label: "Employees", iconColor: "text-pharma-green", showPlus: true },
     { value: "8", label: "Products", iconColor: "text-pharma-lightBlue", showPlus: true },
-    { value: "15", label: "Cities", iconColor: "text-pharma-green", showPlus: true },
+    { value: "20", label: "Cities", iconColor: "text-pharma-green", showPlus: true },
     { value: "0", label: "R & D Center", iconColor: "text-pharma-lightBlue", showPlus: false }, // Yahan `showPlus` ko false kiya gaya
   ];
 
