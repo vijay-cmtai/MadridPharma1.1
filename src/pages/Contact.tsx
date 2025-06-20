@@ -270,7 +270,7 @@ const Contact = () => {
                   {
                     icon: Mail,
                     title: "Email",
-                    content: "Madridpharmaceautical@gmail.com",
+                    content: "Madridpharmaceautical@gmail.com\ninfo@madridpharma.com",
                     color: "from-purple-500 to-purple-600",
                     bgColor: "from-purple-50 to-purple-100",
                   },
