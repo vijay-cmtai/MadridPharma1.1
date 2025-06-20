@@ -3,6 +3,19 @@ import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "/assets/images/madrid-logo.png"; // Apne logo ka sahi path yahan daalein
+
+// Pehle tailwind.config.js mein yeh colors add karein
+// theme: {
+//   extend: {
+//     colors: {
+//       'pharma-darkBlue': '#1E3A8A', // Example: Navy Blue
+//       'pharma-lightBlue': '#3B82F6', // Example: Bright Blue
+//       'pharma-blue': '#00529b',
+//       'pharma-green': '#008e5b',
+//     },
+//   },
+// }
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
