@@ -270,7 +270,7 @@ const Contact = () => {
                     title: "Email",
                     // --- [YEH LINE UPDATE HUI HAI] ---
                     content:
-                      "Madridpharmaceautical@gmail.com\info@madridpharma.com",
+                      "Madridpharmaceautical@gmail.com",
                     color: "from-purple-500 to-purple-600",
                     bgColor: "from-purple-50 to-purple-100",
                   },
