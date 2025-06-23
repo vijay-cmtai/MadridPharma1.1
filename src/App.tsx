@@ -34,10 +34,10 @@ const App = () => {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>Madrid Pharmaceutical Pvt. Ltd</title>
+        <title>Madrid Pharma Pvt. Ltd</title>
         <meta
           name="description"
-          content="Madrid Pharmaceutical Pvt. Ltd - Quality pharmaceutical products and healthcare solutions."
+          content="Madrid Pharma Pvt. Ltd - Quality pharmaceutical products and healthcare solutions."
         />
         <meta
           name="keywords"
