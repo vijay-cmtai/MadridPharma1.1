@@ -25,7 +25,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <h3 className="text-2xl font-bold mb-4">
-              Madrid <span>Pharma</span>
+              Madrid <span>PHARMACEUTICAL </span>
             </h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Leading Pharmaceutical company dedicated to improving healthcare
@@ -36,7 +36,7 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
                 <p className="text-gray-300">
-                  MADRID PHARMA PVT LTD
+                  MADRID PHARMACEUTICAL PVT LTD
                   <br />
                    H.N. B-2405 MAIN ROAD,PUSTA-1 SONIA VIHAR,
                   <br/>
