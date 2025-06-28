@@ -58,7 +58,7 @@ const Contact = () => {
       access_key: accessKey,
       from_name: "Madrid Pharmaceutical Website",
       subject: `New Contact Form Submission from ${formData.firstName}`,
-      email: "info@madridpharma.com", // Admin email
+      email: formData.email, // Admin email
       replyto: formData.email,
       firstName: formData.firstName,
       lastName: formData.lastName,
@@ -263,7 +263,7 @@ const Contact = () => {
                   {
                     icon: Mail,
                     title: "Email",
-                    content: "Madridpharmaceautical@gmail.com",
+                    content: "info@madridpharma.com",
                     color: "from-purple-500 to-purple-600",
                     bgColor: "from-purple-50 to-purple-100",
                   },
