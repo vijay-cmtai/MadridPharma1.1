@@ -3,7 +3,6 @@ import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import {
-  Phone,
   Mail,
   MapPin,
   Clock,
@@ -22,6 +21,8 @@ interface FormData {
 }
 
 const Contact = () => {
+  const accessKey = "95a2c232-9d18-422b-a304-d2aa91ef0fb4"; // Replace with your Web3Forms Access Key
+
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
@@ -29,11 +30,9 @@ const Contact = () => {
     subject: "General Inquiry",
     message: "",
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<{
-    success: boolean;
-    message: string;
-  }>({
+  const [submitStatus, setSubmitStatus] = useState({
     success: false,
     message: "",
   });
@@ -55,39 +54,51 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmitStatus({ success: false, message: "" });
 
+    const payload = {
+      access_key: accessKey,
+      from_name: "Madrid Pharmaceutical Website",
+      subject: `New Contact Form Submission from ${formData.firstName}`,
+      email: "info@madridpharma.com", // Admin email
+      replyto: formData.email,
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      message: formData.message,
+    };
+
     try {
-      // ✅ URL ko proxy ke anusaar set kiya gaya hai
-      const response = await fetch(
-        "https://madridbackend.onrender.com/send-email",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
       const result = await response.json();
 
-      if (!response.ok) {
-        throw new Error(result.message || `Server Error: ${response.status}`);
+      if (result.success) {
+        setSubmitStatus({
+          success: true,
+          message: "Thank you! Your message has been sent successfully.",
+        });
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          subject: "General Inquiry",
+          message: "",
+        });
+      } else {
+        setSubmitStatus({
+          success: false,
+          message: result.message || "Something went wrong. Please try again.",
+        });
       }
-
-      setSubmitStatus({ success: true, message: result.message });
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        subject: "General Inquiry",
-        message: "",
-      });
-    } catch (error: any) {
-      console.error("[FRONTEND_SUBMIT_ERROR]", error);
+    } catch (error) {
       setSubmitStatus({
         success: false,
-        message:
-          error.message || "An unexpected error occurred. Please try again.",
+        message: "An unexpected error occurred. Please try again later.",
       });
     } finally {
       setIsSubmitting(false);
@@ -114,6 +125,7 @@ const Contact = () => {
       <section className="py-16 md:py-20">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+            {/* Form Section */}
             <div className="bg-white rounded-2xl p-8 sm:p-10 shadow-xl border border-gray-100">
               <div className="flex items-center mb-8">
                 <div className="bg-gradient-to-r from-blue-500 to-green-500 rounded-full w-12 h-12 flex items-center justify-center mr-4 shadow-md">
@@ -123,77 +135,59 @@ const Contact = () => {
                   Send us a Message
                 </h2>
               </div>
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label
-                      htmlFor="firstName"
-                      className="block text-gray-700 text-sm font-semibold mb-2"
-                    >
+                    <label className="block text-gray-700 text-sm font-semibold mb-2">
                       First Name
                     </label>
                     <input
                       type="text"
-                      id="firstName"
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500"
-                      placeholder="Enter your first name"
                       required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
                   <div>
-                    <label
-                      htmlFor="lastName"
-                      className="block text-gray-700 text-sm font-semibold mb-2"
-                    >
+                    <label className="block text-gray-700 text-sm font-semibold mb-2">
                       Last Name
                     </label>
                     <input
                       type="text"
-                      id="lastName"
                       name="lastName"
                       value={formData.lastName}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500"
-                      placeholder="Enter your last name"
                       required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
                 </div>
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-gray-700 text-sm font-semibold mb-2"
-                  >
+                  <label className="block text-gray-700 text-sm font-semibold mb-2">
                     Email Address
                   </label>
                   <input
                     type="email"
-                    id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500"
-                    placeholder="Enter your email"
                     required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-gray-700 text-sm font-semibold mb-2"
-                  >
+                  <label className="block text-gray-700 text-sm font-semibold mb-2">
                     Subject
                   </label>
                   <select
-                    id="subject"
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 bg-white"
                     required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl bg-white focus:ring-2 focus:ring-blue-500"
                   >
                     <option value="General Inquiry">General Inquiry</option>
                     <option value="Product Information">
@@ -207,22 +201,17 @@ const Contact = () => {
                   </select>
                 </div>
                 <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-gray-700 text-sm font-semibold mb-2"
-                  >
+                  <label className="block text-gray-700 text-sm font-semibold mb-2">
                     Message
                   </label>
                   <textarea
-                    id="message"
                     name="message"
                     rows={5}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500"
-                    placeholder="Enter your message"
                     required
-                  ></textarea>
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500"
+                  />
                 </div>
                 <Button
                   type="submit"
@@ -230,11 +219,15 @@ const Contact = () => {
                   className="w-full bg-gradient-to-r from-blue-600 to-green-600 hover:opacity-90 text-white py-3.5 text-lg font-semibold rounded-xl shadow-lg flex items-center justify-center"
                 >
                   {isSubmitting ? (
-                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                    <>
+                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />{" "}
+                      Sending...
+                    </>
                   ) : (
-                    <Send className="mr-2 h-5 w-5" />
+                    <>
+                      <Send className="mr-2 h-5 w-5" /> Send Message
+                    </>
                   )}
-                  {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
                 {submitStatus.message && (
                   <p
@@ -248,6 +241,7 @@ const Contact = () => {
               </form>
             </div>
 
+            {/* Contact Info Section */}
             <div className="pt-0 md:pt-2">
               <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-900 to-green-600 bg-clip-text text-transparent mb-8">
                 Get in Touch
@@ -263,14 +257,13 @@ const Contact = () => {
                     title: "Address",
                     content:
                       "MADRID PHARMACEUTICAL PVT LTD\nH.N. B-2405 MAIN ROAD,\nPUSTA-1 SONIA VIHAR, DELHI- 110094",
-
                     color: "from-blue-500 to-blue-600",
                     bgColor: "from-blue-50 to-blue-100",
                   },
                   {
                     icon: Mail,
                     title: "Email",
-                    content: "Madridpharmaceautical@gmail.com\ninfo@madridpharma.com",
+                    content: "Madridpharmaceautical@gmail.com",
                     color: "from-purple-500 to-purple-600",
                     bgColor: "from-purple-50 to-purple-100",
                   },
@@ -289,15 +282,15 @@ const Contact = () => {
                   >
                     <div className="flex items-start">
                       <div
-                        className={`bg-gradient-to-r ${contact.color} rounded-full w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center mr-4 sm:mr-6 flex-shrink-0 group-hover:scale-105 transition-transform duration-300 shadow-md`}
+                        className={`bg-gradient-to-r ${contact.color} rounded-full w-12 h-12 flex items-center justify-center mr-4 shadow-md`}
                       >
-                        <contact.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                        <contact.icon className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-1.5 sm:mb-2">
+                        <h3 className="text-lg font-bold text-gray-800 mb-1">
                           {contact.title}
                         </h3>
-                        <p className="text-gray-700 text-sm sm:text-base leading-relaxed whitespace-pre-line">
+                        <p className="text-gray-700 whitespace-pre-line">
                           {contact.content}
                         </p>
                       </div>
@@ -308,14 +301,15 @@ const Contact = () => {
             </div>
           </div>
 
+          {/* Map Placeholder */}
           <div className="mt-16 md:mt-20">
             <h3 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8 md:mb-10">
               Find Us
             </h3>
             <div className="bg-white rounded-2xl h-80 md:h-96 flex items-center justify-center shadow-xl border border-gray-200 p-6">
               <div className="text-center">
-                <MapPin className="w-14 h-14 sm:w-16 sm:h-16 text-blue-500 mx-auto mb-4" />
-                <p className="text-gray-700 font-semibold text-lg sm:text-xl">
+                <MapPin className="w-14 h-14 text-blue-500 mx-auto mb-4" />
+                <p className="text-gray-700 font-semibold text-lg">
                   Interactive Map Integration Coming Soon
                 </p>
                 <p className="text-gray-500 text-sm mt-1">
